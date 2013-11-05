@@ -1,0 +1,113 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+pt:
+  join_us: "Junte-se a nós"
+  follow_us: "Siga-nos"
+  page_not_available: "Esta página não está disponível no seu idioma"
+  legal:
+    privacy_policy: "Política de privacidade"
+    terms_of_use: "Termos de Uso"
+    copyright: "Copyright"
+    privacy_notice: 'O Movimento irá proteger a sua <a href="/privacy-policy"> privacidade </ a> e atualiza-lo sobre esta e outras campanhas.'
+  buttons:
+    sign: "Assine"
+    join: "Junte-se a nós"
+  fields:
+    email: "EMAIL"
+    first_name: "NOME"
+    last_name: "SOBRENOME"
+    country: "PAÍS"
+    postcode: "CEP/CÓDIGO POSTAL"
+    mobile: "CELULAR"
+    home_phone: "TELFONE FIXO"
+    suburb: "BAIRRO/CIDADE/ESTADO"
+    street_address: "ENDEREÇO"
+    validations:
+      email_required: "E-mail é obrigatório"
+      email_invalid: "E-mail é inválido"
+      first_name_required: "Nome é obrigatório"
+      last_name_required: "Sobrenome é obrigatório"
+      country_required: "País é necessário"
+      postcode_required: "CEP/Código Postal é obrigatório"
+      mobile_invalid: "Celular é inválido"
+      home_phone_invalid: "Telefone fixo é inválido"
+      suburb_required: "Bairro/Cidade/Estado é obrigatório"
+      street_address_required: "Endereço é obrigatório"
+      mobile_number_required: "Celular é obrigatório"
+      home_phone_required: "Telefone fixo é obrigatório"
+  actions:
+    show:
+      comments_feed:
+        what_you_have_said: "Assinatura Recentes"
+        from: "de"
+      taf:
+        share: "compartilhe"
+        tweet: "tuíte"
+        email: "envie por email"
+      donation:
+        security_code: 'CVV2'
+        secure: "Seguro"
+        amount: "Valor"
+        name: "Nome"
+        payment: "Pagamento"
+        name_and_payment: "Nome e Pagamento"
+        currency: "Moeda"
+        or_pay_with: "Ou pague com"
+        donate_with_paypal: "Doe com PayPal"
+        select_an_amount: "Selecione um Valor"
+        next: "Seguinte"
+        pledge_now: "Comprometa-se Agora"
+        disclaimer: 'O Movimento irá proteger a sua <a href="/privacy-policy"> privacidade </ a> e atualiza-lo sobre esta e outras campanhas.'
+        suggested_amount_other: "outro"
+        expiry: "Validade"
+        continue: "CONTINUAR"
+        return_from_paypal:
+          interstitial_form_header: "Você está quase lá!"
+          interstitial_form_body: "Pressione o botão para completar a sua doação. <br> Por favor, aguarde enquanto o seu pagamento é processado. <br> Você será automaticamente redirecionado."
+          interstitial_header: "Por favor, aguarde..."
+          interstitial_body: "Obrigado pela sua doação. Por favor, aguarde enquanto o seu pagamento é processado. <br> Você será automaticamente redirecionado."
+      email_targets:
+        to: "Para:"
+        subject: "Assunto:"
+        body: "Conteúdo:"
+        send_me_a_copy: "Envie-me uma cópia deste e-mail"
+  action_taken:
+    PetitionModule:
+      message_before_threshold_reached: "Ajude-nos a alcançar nosso objetivo de %{goal} assinaturas."
+      steps_taken: "%{counter} pessoas apoiam esta campanha.Ajude-nos a chegar a %{goal}."
+      goal_reached: "%{counter} pessoas apoiaram esta campanha."
+      goal: "META"
+    EmailTargetsModule:
+      message_before_threshold_reached: "Ajude-nos a alcançar nosso objetivo de %{meta} mensagens."
+      steps_taken: "%{counter} pessoas apoiam esta campanha.Ajude-nos a chegar a %{goal}."
+      goal_reached: "%{counter} pessoas apoiaram esta campanha."
+      goal: "META"
+    NonTaxDeductibleDonationModule:
+      message_before_threshold_reached: "Ajude-nos a alcançar nosso objetivo de %{goal} doações."
+      steps_taken: "%{counter} pessoas doaram.Ajude-nos a obter %{goal}."
+      goal_reached: "%{counter} pessoas doaram."
+      goal: "META"
+    TaxDeductibleDonationModule:
+      message_before_threshold_reached: "Ajude-nos a alcançar nosso objetivo de %{goal} doações."
+      steps_taken: "%{counter} pessoas doaram.Ajude-nos a obter %{goal}."
+      goal_reached: "%{counter} pessoas doaram."
+      goal: "META"

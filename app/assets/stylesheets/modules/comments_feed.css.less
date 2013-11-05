@@ -1,0 +1,60 @@
+@import "vars_and_mixins.css.less";
+
+.comments_feed {
+  display: none;
+  margin-top: 45px;
+  padding: 0 20px 0 20px;
+  overflow: hidden;
+
+  ul {
+    overflow: hidden;
+    list-style: none;
+    li {
+      position: relative;
+      margin-bottom: 47px;
+      width: 310px;
+      .quote_box {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: image-url('comment_quote_box.png');
+        background-size: cover;
+      }
+    }
+  }
+
+  h3 {
+    .proxima-nova-bold;
+    color: @blue;
+    font-size: 18px;
+    margin-top: 22px;
+    padding-bottom: 8px;
+  }
+
+  .message {
+    color: grey;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 500;
+    float: right;
+    width: 265px;
+    .comment {
+      padding-bottom: 7px;
+      &:before {
+        content: '\201C';
+        margin-left: -5px;
+      }
+
+      &:after {
+        content: '\201D';
+      }
+    }
+    .author {
+      font-size: 10px;
+
+      .author_name {
+        color: @action-color;
+      }
+    }
+  }
+}

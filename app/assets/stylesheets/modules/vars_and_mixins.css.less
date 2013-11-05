@@ -1,0 +1,131 @@
+@blue: #003456;
+@footer-color: #004163;
+@action-color: #dbae63;
+@action-hover-color: #FFD48D;
+@grey-background-color: #f3f4f4;
+@placeholder-color: #999;
+@input-border-settings: 1px solid #d9d9d9;
+
+.border-radius(@radius: 3px) {
+          border-radius: @radius;
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+}
+
+.screen { background: rgba(0, 0, 0, 0.2); }
+
+.hover-state {
+  &:hover {
+    color: @action-color;
+    text-decoration: none;
+  }
+}
+
+.proxima-nova {
+  font-family: "proxima-nova",sans-serif;
+  font-style: normal;
+}
+
+.proxima-nova-regular {
+  .proxima-nova;
+  font-weight: 400;
+}
+
+.proxima-nova-semibold {
+  .proxima-nova;
+  font-weight: 600;
+}
+
+.proxima-nova-bold {
+  .proxima-nova;
+  font-weight: 700;
+}
+
+.generic_button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  background-color: @action-color;
+  .proxima-nova-bold;
+  color: white;
+  font-size: 22px;
+  &:hover {
+    background-color: @action-hover-color;
+    color: @blue;
+  }
+}
+
+.link_button {
+  .generic_button;
+  display: inline-block;
+  text-align: center;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.input_text {
+  .proxima-nova;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.form_inputs {
+  p.field_wrapper {
+    margin: 0px;
+
+    &.last_name {
+      border-left: @input-border-settings;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 55px;
+    padding: 18px 0px 15px 10px;
+    .input_text;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-top: @input-border-settings;
+  }
+}
+
+.social_links {
+  .facebook, .twitter, .youtube, .tumblr, .flickr, .orkut {
+    display: inline-block;
+    margin: 0px 5px;
+    text-indent: -4000px;
+  }
+
+  .facebook {
+    width: 21px;
+    height: 20px;
+    background: image-url("social_icons.png") no-repeat -6px -5px;
+  }
+  .twitter {
+    width: 25px;
+    height: 20px;
+    background: image-url("social_icons.png") no-repeat -70px -5px;
+  }
+  .youtube {
+    width: 28px;
+    height: 20px;
+    background: image-url("social_icons.png") no-repeat -36px -5px;
+  }
+  .flickr {
+    width: 23px;
+    height: 11px;
+    background: image-url('social_icons.png') no-repeat -269px -10px;
+  }
+  .orkut {
+    width: 20px;
+    height: 20px;
+    background: image-url('social_icons.png') no-repeat -305px -5px;
+  }
+  .tumblr {
+    background: image-url('social_icons.png') no-repeat -142px -4px;
+    width: 13px;
+    height: 22px;
+  }
+}

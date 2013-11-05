@@ -1,0 +1,61 @@
+<% content_for :facebook_meta do %>
+  <meta property="og:title" content="<%= @action_content.facebook_title -%>"/>
+  <meta property="og:image" content="<%= @action_content.facebook_image_url -%>"/>
+  <meta property="og:description" content="<%= @action_content.facebook_description -%>"/>
+  <meta property="og:type" content="cause" />
+  <meta property="og:url" content="<%= request.url %>" />
+<% end %>
+
+<div id='action_page_background'>
+  <section class='container' id='action_page'>
+    <div class='row' id='header_content'>
+      <div class='col-md-12'>
+        <% @action_content.header_content_modules.each do |content_module| %>
+          <h2><%= raw content_module.content %></h2>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-7' id='main_content'>
+        <% @action_content.main_content_modules.each_with_index do |content_module, index| %>
+          <%= render_partial_for(content_module, @member) %>
+          <%= render('counter_for_module', action_content: @action_content) if index.zero? %>
+        <% end %>
+      </div>
+
+      <div class='col-md-5' id='sidebar_content'>
+        <div id='action_module'>
+          <% @action_content.sidebar_content_modules.each do |content_module| %>
+            <%= render_partial_for(content_module, @member) %>
+          <% end %>
+        </div>
+
+        <% with_petition_module(@action_content.sidebar_content_modules) do |petition_module| %>
+          <% if comments_enabled?(petition_module) %>
+            <div class="comments_feed" data-feed-path="<%= activity_path(locale: I18n.locale.to_s, format: 'json', module_id: petition_module.id, type: 'comments') %>">
+              <h3><%= t('.comments_feed.what_you_have_said') %></h3>
+              <ul></ul>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-12' id='footer_content'>
+        <%= render_footer_modules(@action_content) %>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script type="text/template" id="recent_comment_template">
+  <li>
+    <div class="quote_box"></div>
+    <div class="message">
+      <p class="comment">{{comment}}</p>
+      <p class="author"><span class='author_name'>{{first_name}} {{last_name}}{{#country}}</span> <%= t('.comments_feed.from') %> {{country}}{{/country}}</p>
+    </div>
+  </li>
+</script>

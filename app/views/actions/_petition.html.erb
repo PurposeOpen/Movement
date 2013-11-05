@@ -1,0 +1,11 @@
+<% content_for :ask_module_form do %>
+  <%= form_for @member, as: "member_info", url: take_action_action_path(id: @action_content.id, locale: I18n.locale.to_s), method: :post do |f| %>
+
+    <%= render partial: "actions/form/user_details", locals: { action_content: @action_content, content_module: content_module, f: f } %>
+
+    <%= render partial: "actions/form/submit_button_and_privacy_policy", locals: { content_module: content_module, f: f } %>
+
+  <% end %>
+<% end %>
+
+<%= render partial: "ask_module", locals: {content_module: content_module, toggleable_content: content_module.options.petition_statement, explanatory_text: content_module.content } %>

@@ -1,0 +1,35 @@
+@import "vars_and_mixins.css.less";
+
+#return_from_paypal_underpainting {
+  background-color: @grey-background-color;
+}
+
+#return-from-paypal-interstitial {
+  margin: 50px 0px 82px 0px;
+  color: @blue;
+
+  header {
+    margin-bottom: 15px;
+    .proxima-nova-bold;
+    font-size: 35px;
+  }
+
+  p {
+    .proxima-nova-semibold;
+    font-size: 25px;
+  }
+
+  #spinner {
+    width: 66px;
+    height: 66px;
+    margin: 120px auto 0px auto;
+  }
+
+  #complete_paypal_donation_button {
+    .generic_button;
+    width: auto;
+    margin-top: 20px;
+    padding: 13px 40px;
+    .border-radius;
+  }
+}

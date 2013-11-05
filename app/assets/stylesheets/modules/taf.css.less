@@ -1,0 +1,60 @@
+@import "vars_and_mixins.css.less";
+
+#share_options {
+  padding:  7px 20px 55px 20px;
+  background-color: white;
+  .border-radius;
+
+  h1, h2, h3, h4 {
+    .proxima-nova-bold;
+    color: @blue;
+  }
+
+  h4 { margin-bottom: 15px; }
+
+  #facebook_share_icon, #twitter_share_icon, #email_share_icon {
+    display: inline-block;
+    position: absolute;
+  }
+
+  #facebook_share_icon {
+    width: 10px;
+    height: 18px;
+    bottom: 14px;
+    left: 35px;
+    background: image-url('taf_options.png') no-repeat -12px -6px;
+  }
+
+  #twitter_share_icon {
+    width: 18px;
+    height: 14px;
+    bottom: 16px;
+    left: 31px;
+    background: image-url('taf_options.png') no-repeat -40px -8px;
+  }
+
+  #email_share_icon {
+    width: 16px;
+    height: 13px;
+    bottom: 17px;
+    left: 31px;
+    background: image-url('taf_options.png') no-repeat -75px -9px;
+  }
+
+  .link_button {
+    margin-top: 20px; 
+    padding: 10px 36px 10px 42px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 100;
+    .border-radius;
+  }
+
+  .share_count {
+    position: absolute;
+    bottom: 11px;
+    right: 35px;
+    font-size: 16px;
+    color: white;
+  }
+}

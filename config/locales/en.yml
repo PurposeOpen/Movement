@@ -1,0 +1,113 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  join_us: 'Join us'
+  follow_us: 'Follow us'
+  page_not_available: 'This page is not available in your language'
+  legal:
+    privacy_policy: 'Privacy Policy'
+    terms_of_use: 'Terms of Use'
+    copyright: 'Copyright'
+    privacy_notice: 'The Movement will protect your <a href="/privacy-policy">privacy</a> and keep you up to date on this and other campaigns.'
+  buttons:
+    sign: 'Sign'
+    join: "Join"
+  fields:
+    email: 'EMAIL'
+    first_name: 'FIRST NAME'
+    last_name: 'LAST NAME'
+    country: 'COUNTRY'
+    postcode: 'ZIP/POSTAL CODE'
+    mobile: 'MOBILE PHONE'
+    home_phone: 'HOME PHONE'
+    suburb: 'SUBURB'
+    street_address: 'STREET ADDRESS'
+    validations:
+      email_required: 'Email is required'
+      email_invalid: 'Email is invalid'
+      first_name_required: 'First name is required'
+      last_name_required: 'Last name is required'
+      country_required: 'Country is required'
+      postcode_required: 'ZIP/Postal code is required'
+      mobile_invalid: 'Mobile phone is invalid'
+      home_phone_invalid: 'Home phone is invalid'
+      suburb_required: 'Suburb required'
+      street_address_required: 'Street address required'
+      mobile_number_required: 'Mobile is required'
+      home_phone_required: 'Home phone is required'
+  actions:
+    show:
+      comments_feed:
+        what_you_have_said: "Recent Signers"
+        from: 'from'
+      taf:
+        share: 'Share'
+        tweet: 'Tweet'
+        email: 'Email'
+      donation:
+        security_code: 'CVV2'
+        secure: 'Secure'
+        amount: 'Amount'
+        name: 'Name'
+        payment: 'Payment'
+        name_and_payment: 'Name & Payment'
+        currency: 'Currency'
+        or_pay_with: 'or pay with'
+        donate_with_paypal: 'Donate with PayPal'
+        select_an_amount: 'select an amount'
+        next: 'Next'
+        pledge_now: 'pledge now'
+        disclaimer: 'The Movement will protect your <a href="/privacy-policy">privacy</a> and keep you up to date on this and other campaigns.'
+        suggested_amount_other: 'other'
+        expiry: 'Expiry'
+        continue: 'CONTINUE'
+        return_from_paypal:
+          interstitial_form_header: You're almost done!
+          interstitial_form_body: Press the button to complete your donation. <br>Please wait while your payment is processed.<br>You will be automatically redirected.
+          interstitial_header: Please wait...
+          interstitial_body: Thanks for your donation. Please wait while your payment is processed.<br>You will be automatically redirected.
+      email_targets:
+        to: 'To:'
+        subject: 'Subject:'
+        body: 'Body:'
+        send_me_a_copy: 'Send me a copy of this email'
+  action_taken:
+    PetitionModule:
+      message_before_threshold_reached: "Help us reach our goal of %{goal} signatures."
+      steps_taken: '%{counter} people support this campaign. Help us get to %{goal}.'
+      goal_reached: '%{counter} people have supported this campaign.'
+      goal: 'GOAL'
+    EmailTargetsModule:
+      message_before_threshold_reached: "Help us reach our goal of %{goal} messages."
+      steps_taken: '%{counter} people support this campaign. Help us get to %{goal}.'
+      goal_reached: '%{counter} people have supported this campaign.'
+      goal: 'GOAL'
+    NonTaxDeductibleDonationModule:
+      message_before_threshold_reached: "Help us reach our goal of %{goal} donations."
+      steps_taken: '%{counter} people have donated. Help us to get %{goal}.'
+      goal_reached: '%{counter} people have donated.'
+      goal: 'GOAL'
+    TaxDeductibleDonationModule:
+      message_before_threshold_reached: "Help us reach our goal of %{goal} donations."
+      steps_taken: '%{counter} people have donated. Help us to get %{goal}.'
+      goal_reached: '%{counter} people have donated.'
+      goal: 'GOAL'

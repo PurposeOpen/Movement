@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Uncomment to make IE8 render like IE7 -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <% if content_for? :facebook_meta %>
+      <%= yield(:facebook_meta) %>
+    <% else %>
+      <meta property="og:title" content="Movement" />
+      <meta property="og:type" content="cause" />
+      <meta property="og:description" content="This is a demo movement using the Purpose Platform" />
+      <meta property="og:image" content="<%= image_url('fb_image.png') %>" />
+      <meta property="og:url" content="<%= root_url %>" />
+    <% end %>
+
+    <title><%= content_for?(:title) ? yield(:title) : "Movement" %></title>
+
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "lib/modernizr.custom" %>
+
+    <script type="text/javascript" src="//use.typekit.net/mbv0oxt.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" data-enable-activity-feed="<%= AppConstants.enable_activity_feed %>" id='<%= "#{controller_name}_#{action_name}_page" %>' data-locale="<%= I18n.locale %>">
+
+    <div id='masthead_underpainting'>
+      <div id='masthead_background_image' style='<%= curve_background_image_unless_homepage %>'>
+        <div id='masthead_background_image_screen'>
+          <div id='masthead_background_color'>
+            <header class='container' id='masthead'>
+              <div class='row'>
+                <div class='col-md-4'>
+                  <%= link_to home_url(locale: I18n.locale), class: 'brand' do %>
+                    <img src='<%= @movement.banner_image %>'>
+                  <% end %>
+                </div>
+                <div class='col-md-8' id='nav'>
+                  <nav id='locales'>
+                    <ul>
+                      <% sorted_languages(@recommended_languages_to_display).each do |language| %>
+                        <li>
+                          <%= link_to_unless I18n.locale == language.iso_code.to_sym, language.native_name, locale: language.iso_code %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </nav>
+                  <nav id='main'>
+                    <%= @movement.header_navbar.html_safe %>
+                  </nav>
+                </div>
+              </div>
+            </header>
+          </div>
+        </div>
+
+        <% if content_for? :masthead %>
+          <%= yield(:masthead) %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= yield %>
+
+    <div id='footer_underpainting'>
+      <div id='footer_container'>
+        <footer class='container'>
+          <div class='row'>
+            <div class='col-md-2'>
+              <%= image_tag('logo-footer.png') %>
+            </div>
+            <nav class='col-md-10'>
+              <%= raw @movement.footer_navbar %>
+            </nav>
+          </div>
+
+          <div class='row' id='legal'>
+            <div class='col-md-12'>
+              <span>
+                <%= t('legal.copyright') %> &#169; <%= Time.now.year %> Speak Up! &#124;
+                <%= link_to_unless_current t('legal.privacy_policy'), content_page_path(content_page: 'privacy', locale: I18n.locale) %> &#124;
+                <%= link_to_unless_current t('legal.terms_of_use'), content_page_path(content_page: 'terms', locale: I18n.locale) %>
+              </span>
+              <span id='footer_social_links'>
+                <%= social_links(@movement.follow_links.attributes) %>
+              </span>
+            </div>
+          </div>
+
+          <div class='row' id='image_attribution'>
+            <div class='col-md-12'>
+              Background image:
+              <a href="http://www.flickr.com/photos/zoonabar/7221714496/" target="_blank">Protest</a> by Chris Brown
+              <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      window.jQuery || document.write('<script src="/assets/lib/jquery.js"><\/script>')
+    </script>
+
+    <%= javascript_include_tag "application" %>
+
+    <% if content_for? :additional_js %>
+      <%= yield(:additional_js) %>
+    <% end %>
+
+    <%= render partial: 'layouts/google_analytics' unless Rails.env.development? %>
+
+  </body>
+</html>

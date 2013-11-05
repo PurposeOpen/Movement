@@ -1,0 +1,39 @@
+<div id='content_page_background'>
+  <article id="<%= "#{@page.name.parameterize}-content-page" %>" class='content_page container'>
+    <header class='row'>
+      <div class='col-md-12'>
+        <% @page.header_content_modules.each do |header_module| %>
+          <%= raw header_module.content %>
+        <% end %>
+      </div>
+    </header>
+
+    <div id='content_container' class='row'>
+      <div id='main_content' class='col-md-7'>
+        <% @page.main_content_modules.each do |main_module| %>
+          <div class='module_content'>
+            <%= raw main_module.content %>
+          </div>
+        <% end %>
+      </div>
+
+      <div id='sidebar_content' class='col-md-5'>
+        <% @page.sidebar_content_modules.each do |sidebar_module| %>
+          <div class='module_content'>
+            <%= raw sidebar_module.content %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div id='footer_content' class='col-md-12'>
+        <% @page.footer_content_modules.each do |footer_module| %>
+          <div class='module_content'>
+            <%= raw footer_module.content %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </article>
+</div>

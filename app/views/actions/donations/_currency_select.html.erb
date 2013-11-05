@@ -1,0 +1,9 @@
+<div class="closed"><%= default_currency %><div></div></div>
+<div class="opened">
+  <ul>
+    <% currencies.each do |currency_code| %>
+      <% currency = Money::Currency.new(currency_code) %>
+      <li data-value="<%= currency.iso_code %>"><%= raw (currency.html_entity.to_s + currency.iso_code.to_s) %></li>
+    <% end %>
+  </ul>
+</div>

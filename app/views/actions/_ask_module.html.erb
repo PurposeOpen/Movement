@@ -1,0 +1,14 @@
+
+  <div id='ask_article'>
+    <h3><label for="petition_toggle"><%= raw content_module.title %></label></h3>
+
+    <div>
+      <p class='ask_content'><%= raw toggleable_content %></p>
+    </div>
+
+    <div>
+      <p class='explanatory_text'><%= raw explanatory_text if local_assigns.has_key?(:explanatory_text) %></p>
+    </div>
+  </div>
+
+  <%= yield(:ask_module_form) %>

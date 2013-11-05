@@ -1,0 +1,113 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+hi:
+  join_us: "साथ दें"
+  follow_us: "हमारी ख़बर पढ़ें"
+  page_not_available: "यह पृष्ठ आपकी भाषा में उपलब्ध नहीं है"
+  legal:
+    privacy_policy: "व्यक्तिगत जानकारी को लेकर नीतियाँ"
+    terms_of_use: "प्रयोग करने के नियम"
+    copyright: "कॉपीराइट"
+    privacy_notice: 'आन्दोलन आप की  <a href="/privacy-policy">व्यक्तिगत जानकारी</a> की रक्षा करेगा और आप को इस मोर्चा व अन्य मोर्चों के बारे में सूचना देता रहेगा ।'
+  buttons:
+    sign: "दस्तख़त करें"
+    join: "साथ दें"
+  fields:
+    email: "ई-मेल"
+    first_name: "पहला नाम"
+    last_name: "दूसरा नाम"
+    country: "देश"
+    postcode: "पिन-कोड"
+    mobile: "मोबाइल"
+    home_phone: "घर का फ़ोन"
+    suburb: "मोहल्ला या इलाका"
+    street_address: "घर का पता"
+    validations:
+      email_required: "ई-मेल चाहिये"
+      email_invalid: "ंई-मेल में गड़बड़"
+      first_name_required: "पहला नाम चाहिये"
+      last_name_required: "दूसरा नाम चाहिये"
+      country_required: "देश चाहिये"
+      postcode_required: "पिन-कोड चाहिये"
+      mobile_invalid: "मोबाइल नम्बर में गड़बड़"
+      home_phone_invalid: "घर के फ़ोन नम्बर में गड़बड़"
+      suburb_required: "मोहल्ला या इलाका चाहिये"
+      street_address_required: "घर का पता चाहिये"
+      mobile_number_required: "मोबाइल का नम्बर चाहिये"
+      home_phone_required: "घर का फ़ोन नम्बर चाहिये"
+  actions:
+    show:
+      comments_feed:
+        what_you_have_said: "किसने अभी अपने दस्तख़त दिया ह"
+        from: "से"
+      taf:
+        share: "प्रसार करें"
+        tweet: "ट्विटर"
+        email: "ई-मेल"
+      donation:
+        security_code: 'CVV2'
+        secure: "सुरक्षित"
+        amount: "रक़म"
+        name: "नाम"
+        payment: "भुगतान"
+        name_and_payment: "नाम व भुगतान"
+        currency: "मुद्रा"
+        or_pay_with: "या [field] से दान दें"
+        donate_with_paypal: "पे-पैल से दान दें"
+        select_an_amount: "मात्रा निर्णय करें"
+        next: "आगे"
+        pledge_now: "दान देने का वादा दें"
+        disclaimer: 'आन्दोलन आप की  <a href="/privacy-policy">व्यक्तिगत जानकारी</a> की रक्षा करेगा और आप को इस मोर्चा व अन्य मोर्चों के बारे में सूचना देता रहेगा ।'
+        suggested_amount_other: "दूसरा"
+        expiry: "ख़त्म होने की तिथि"
+        continue: "आगे"
+        return_from_paypal:
+          interstitial_form_header: "प्रक्रिया समाप्त होनेवाली है !"
+          interstitial_form_body: "दान देने के लिये बट्टन दबाइए । <br>आप का पेमेंट प्रगति पर है, क़प्या धैर्य रखें ।<br>हम आपको आगे ले जाएंगे ।"
+          interstitial_header: "कृप्या धैर्य रखें"
+          interstitial_body: "दान देने के लिये धन्यवाद । <br>आप का पेमेंट प्रगति पर है, क़प्या इसकी प्रतीक्षा करें ।<br>हम आपको आगे ले जाएंगे ।"
+      email_targets:
+        to: "को"
+        subject: "प्रसंग"
+        body: "बॉडी"
+        send_me_a_copy: "मुझे भी इस ई-मेल की प्रतिलिपि भेजिए"
+  action_taken:
+    PetitionModule:
+      message_before_threshold_reached: "%{goal} दस्तख़त इकट्टा करने में हमारी मदद करें ।"
+      steps_taken: "%{counter} लोग इस आन्दोलन में हिस्सा ले रहे हैं । उसको %{goal} बनाने में हमारी मदद करें ।"
+      goal_reached: "%{counter} लोगों ने दान दिया है ।"
+      goal: "लक्ष्य"
+    EmailTargetsModule:
+      message_before_threshold_reached: "%{goal} संदेश भेजने के प्रयास में हमारी मदद करें ।"
+      steps_taken: "%{counter} लोग इस आन्दोलन में हिस्सा ले रहे हैं । उसको %{goal} बनाने में हमारी मदद करें ।"
+      goal_reached: "%{counter} लोगों ने इस आन्दोलन में हिस्सा लिया है ।"
+      goal: "लक्ष्य"
+    NonTaxDeductibleDonationModule:
+      message_before_threshold_reached: "%{goal} दान देनेवाले लोगों की संख्या तक पहूँचने के लिये हमारी मदद करें ।"
+      steps_taken: "%{counter} लोगों ने दान दिया है । %{goal} तक पहूँचने में हमारी मदद करें ।"
+      goal_reached: "%{counter} लोगों ने दान दिया है ।"
+      goal: "लक्ष्य"
+    TaxDeductibleDonationModule:
+      message_before_threshold_reached: "%{goal} लोगों से दान लेने में हमारी मदद करें ।"
+      steps_taken: "%{counter} लोगों ने दान दिया है । %{goal} तक पहूँचने में हमारी मदद करें ।"
+      goal_reached: "%{counter} लोगों ने दान दिया है ।"
+      goal: "लक्ष्य"

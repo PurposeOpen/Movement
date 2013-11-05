@@ -1,0 +1,87 @@
+@import "vars_and_mixins.css.less";
+
+#petition_counter {
+  padding: 0px 10px 10px 0;
+  margin: 41px 0 23px 0px;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  clear: both;
+
+  #a_start {
+    background-color: @action-color;
+    width: 10px;
+    height: 20px;
+    float: left;
+    position: relative;
+    z-index: 999;
+    .border-radius(10px 0 0 10px);
+  }
+
+  #a_mid {
+    background-color: @action-color;
+    height: 20px;
+    padding: 0px 6px 0px 0px;
+    float: left;
+    text-align: right;
+    position: relative;
+    z-index: 999;
+    .proxima-nova-bold;
+    font-size: 16px;
+  }
+  #joint {
+    border-style: solid;
+    height: 0;
+    line-height: 0;
+    width: 0;
+    float: left;
+    border-width: 20px 20px 0 0;
+    border-color: @action-color @blue @blue @action-color;
+    z-index: 999;
+    position: relative;
+  }
+  #b_mid {
+    background-color: @blue;
+    height: 20px;
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+    width: 420px;
+  }
+  #b_end {
+    background-color: @blue;
+    width: 10px;
+    height: 20px;
+    position: absolute;
+    left: 440px;
+    z-index: 1;
+    .border-radius(0 10px 10px 0);
+  }
+  #goal {
+    position: absolute;
+    color: @blue;
+    .proxima-nova-bold;
+    font-size: 16px;
+    right: 5px;
+    z-index: 1000;
+    width: 70px;
+    word-wrap: break-word;
+    .goal_text {
+      margin-bottom: 5px;
+      color: #a4a4a4;
+    }
+  }
+}
+
+#goal_ask {
+  margin-bottom: 42px;
+  .proxima-nova-semibold;
+  font-size: 14px;
+  color: @action-color;
+  font-family: Helvetica;
+
+  .steps_taken {
+    font-weight: bold;
+
+  }
+}

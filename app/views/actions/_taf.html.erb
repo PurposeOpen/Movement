@@ -1,0 +1,36 @@
+<% options = content_module.options %>
+
+<div id='share_options' id='share_options' data-share-url=<%= shares_url %> data-page-id=<%= @action_content.attributes['id'] %> <%= user_id_from_session %>>
+  <h4><%= raw options.headline %></h4>
+  <p><%= raw options.message %></p>
+
+  <% if option_enabled?(:facebook, content_module) %>
+    <div class='col-md-8 col-md-offset-2'>
+      <div id='facebook_share_icon'></div>
+      <a id='fb_share_this' class="link_button" href="<%= fb_share_url(options.facebook_title, options.share_url) %>" target="_blank"><%= t('actions.show.taf.share') %></a>
+      <span class='share_count'><%= share_count(@action_content, 'facebook') %></span>
+    </div>
+  <% end %>
+
+  <div class='clearfix'></div>
+
+  <% if option_enabled?(:twitter, content_module) %>
+    <div class='col-md-8 col-md-offset-2'>
+      <div id='twitter_share_icon'></div>
+      <a id='twitter_submit_button' class="link_button" href=<%= "http://twitter.com/share?url=#{URI.escape(options.share_url)}&text=#{URI.escape(options.tweet)}" %> target="_blank"><%= t('actions.show.taf.tweet') %></a>
+      <span class='share_count'><%= share_count(@action_content, 'twitter') %></span>
+    </div>
+  <% end %>
+
+  <div class='clearfix'></div>
+
+  <% if option_enabled?(:email, content_module) %>
+    <div class='col-md-8 col-md-offset-2' id='email_option'>
+      <div id='email_share_icon'></div>
+      <a id='email_link' class="link_button" href="mailto:?subject=<%= URI.encode(options.email_subject) %>&body=<%= URI.encode(options.email_body.gsub(/\r/, '')) %>" target='_blank'><%= t('actions.show.taf.email') %></a>
+      <span class='share_count'><%= share_count(@action_content, 'email') %></span>
+    </div>
+  <% end %>
+
+  <div class='clearfix'></div>
+</div>

@@ -1,0 +1,69 @@
+<div id='return_from_paypal_underpainting'>
+  <section class='container'>
+    <div class='col-md-12'>
+      <div id="return-from-paypal-interstitial">
+        <article class="interstitial-no-js">
+          <header>
+            <%= raw t('actions.show.donation.return_from_paypal.interstitial_form_header') %>
+          </header>
+
+          <p><%= raw t('actions.show.donation.return_from_paypal.interstitial_form_body') %></p>
+
+          <%= form_tag complete_paypal_donation_action_path(I18n.locale, @id), :method => :put, :id => "complete_paypal_donation_form" do %>
+            <%= hidden_field_tag("token", @token) %>
+            <%= hidden_field_tag("PayerID", @PayerID) %>
+            <%= hidden_field_tag("currency", @currency) %>
+            <%= hidden_field_tag("amount", @amount) %>
+            <%= hidden_field_tag("country_iso", @country_iso) %>
+            <%= hidden_field_tag("postcode", @postcode) %>
+            <%= hidden_field_tag("order_id", @order_id) %>
+            <%= hidden_field_tag("classification", @classification) %>
+            <%= hidden_field_tag("t", @t) %>
+            <%= submit_tag t('continue'), :id => "complete_paypal_donation_button" %>
+          <% end %>
+        </article>
+
+        <article class="interstitial hidden">
+          <header>
+            <%= raw t('actions.show.donation.return_from_paypal.interstitial_header') %>
+          </header>
+
+          <p><%= raw t('actions.show.donation.return_from_paypal.interstitial_body') %></p>
+          
+          <div id='spinner'>
+          </div>
+
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<%= javascript_include_tag 'lib/spin' %>
+
+<%= javascript_tag do %>
+  (function() {
+    var opts = {
+      lines: 13, // The number of lines to draw
+      length: 20, // The length of each line
+      width: 10, // The line thickness
+      radius: 30, // The radius of the inner circle
+      corners: 1, // Corner roundness (0..1)
+      rotate: 0, // The rotation offset
+      direction: 1, // 1: clockwise, -1: counterclockwise
+      color: '#003456', // #rgb or #rrggbb or array of colors
+      speed: 1, // Rounds per second
+      trail: 60, // Afterglow percentage
+      shadow: false, // Whether to render a shadow
+      hwaccel: false, // Whether to use hardware acceleration
+      className: 'spinner', // The CSS class to assign to the spinner
+      zIndex: 2e9, // The z-index (defaults to 2000000000)
+      top: 'auto', // Top position relative to parent in px
+      left: 'auto' // Left position relative to parent in px
+    };
+
+    var target = document.getElementById('spinner');
+    var spinner = new Spinner(opts).spin(target);
+  })();
+
+<% end %>

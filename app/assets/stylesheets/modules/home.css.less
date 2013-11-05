@@ -1,0 +1,184 @@
+@import "vars_and_mixins.css.less";
+@import "lib/bootstrap/variables.css.less";
+
+
+#homepage_callout_screen { .screen; }
+
+section#homepage_callout {
+  padding: 50px 0px;
+
+  #above_the_fold {
+    color: white;
+
+    h2, h3, h4 {
+      text-shadow: @carousel-text-shadow;
+    }
+
+    h2 {
+      .proxima-nova-semibold;
+      font-size: 35px;
+    }
+
+    .link_button {
+      width: auto;
+      margin-top: 40px;
+      padding: 13px 50px;
+      .border-radius;
+    }
+  }
+
+  #member_count {
+    padding: 7px 30px 17px 30px;
+    text-align: center;
+    background-color: white;
+    .border-radius;
+
+    #count {
+      margin-bottom: -7px;
+      .proxima-nova-bold;
+      font-size: 45px;
+      color: @blue;
+    }
+
+    #count_message {
+      font-size: 16px;
+      margin-bottom: 0px;
+    }
+  }
+
+  #donate_button { margin-top: 10px; }
+
+  #social_media {
+    margin-top: 20px;
+    .proxima-nova-semibold;
+    font-size: 15px;
+    color: white;
+
+    .social_links;
+  }
+}
+
+#homepage_join {
+  margin-top: 8px;
+  text-align: center;
+  background-color: white;
+  .border-radius;
+
+  #join_content {
+    padding: 10px 10px 0px 10px;
+
+    h3 {
+      margin-top: 9px;
+      color: @blue;
+      .proxima-nova-bold;
+    }
+  }
+
+  form#remote_join {
+    margin-top: 20px;
+
+    #member_info_email {
+      width: 100%;
+      height: 55px;
+      text-align: center;
+      font-size: 20px;
+      line-height: 40px;
+      border-right: none;
+      border-left: none;
+      border-bottom: none;
+      border-top: 1px solid #DEDEDE;
+    }
+
+    span.error {
+      display: block;
+      color: #eb2954;
+    }
+
+    input[type='submit'] {
+      .generic_button;
+      .border-radius(0 0 3px 3px)
+    }
+  }
+}
+
+#activity_feed {
+  padding: 23px 0px 25px 0px;
+
+  .recent_actions {
+    @feed-width: 200px;
+    @margin-right: 40px;
+
+    padding-top: 13px;
+    width: 4 * (@feed-width + @margin-right);
+    height: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    overflow: hidden;
+
+    a {
+      color: blue;
+      text-decoration: none;
+    }
+
+    .slider {
+      width: 5 * (@feed-width + @margin-right);
+      float: right;
+    }
+    .recent_action {
+      display: inline-block;
+      width: @feed-width;
+      margin-right: @margin-right;
+      float: right;
+
+      .quote_box {
+        float: left;
+        margin-right: 10px;
+        width: 36px;
+        height: 27px;
+        background: image-url('quote_box.png');
+        background-size: cover;
+      }
+
+      .name {
+        .proxima-nova-bold;
+        color: @action-color;
+      }
+
+      .message {
+        margin-left: 36px;
+        line-height: 1.2;
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+#featured_actions_background {
+  background-color: #f3f4f4;
+
+  #featured_actions {
+    padding-bottom: 100px;
+
+    .row { margin-top: 60px; }
+
+    aside {
+      img { width: 100%; }
+
+      .featured_content_title {
+        height: 100%;
+        padding: 20px;
+        background-color: white;
+
+        h3 {
+          margin: 0px;
+          .proxima-nova-bold;
+        }
+      }
+
+      a {
+          .generic_button;
+          .border-radius(0 0 3px 3px);
+        }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+<div class="module generic_module">
+  <% if content_module.try(:title) %>
+    <h3 class="module_title"><%= raw content_module.title %></h3>
+  <% end %>
+  <div class="module_content"><%= raw content_module.try(:content) %></div>
+</div>

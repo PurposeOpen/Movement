@@ -1,0 +1,22 @@
+<% content_module.options.suggested_amounts.attributes.each do |currency_code, amounts| %>
+  <% default_amount = content_module.options.default_amount.attributes[currency_code] %>
+  <% currency = Money::Currency.new(currency_code) %>
+  <% if default_currency == currency %>
+    <div class="suggested_amounts_wrapper amounts_for_currency_<%= currency_code %>_onetime">
+  <% else %>
+    <div class="suggested_amounts_wrapper amounts_for_currency_<%= currency_code %>_onetime" style="display:none">
+  <% end %>
+  <% amounts.split(",").each do |amount| %>
+    <div class="third amount-selector">
+      <% if amount == default_amount %>
+        <div class="amount active" data-value="<%= amount %>"><span><%= raw currency.html_entity %></span><%= amount %></div>
+      <% else %>
+        <div class="amount" data-value="<%= amount %>"><span><%= raw currency.html_entity %></span><%= amount %></div>
+      <% end %>
+    </div>
+  <% end %>
+    <div class="third amount-selector">
+      <input type="text" class="amount-input" placeholder="<%= t('actions.show.donation.suggested_amount_other') %>" value="">
+    </div>
+  </div>
+<% end %>

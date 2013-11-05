@@ -1,0 +1,107 @@
+<% content_for :masthead do %>
+  <div id='homepage_callout_screen'>
+    <section class='container' id='homepage_callout'>
+      <div class='row'>
+        <div class='col-md-12' id='corners'>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-8' id='above_the_fold'>
+          <% @movement.featured_contents.attributes["AbovetheFold"].try(:each) do |featured_action| %>
+            <h2><%= raw featured_action.title %></h2>
+            <%= raw featured_action.description %>
+          <% end %>
+        </div>
+        <div class='col-md-4'>
+          <div id='member_count'>
+            <%= raw @movement.banner_text %>
+          </div>
+
+          <div id='homepage_join'>
+            <div id='join_content'>
+              <h3><%= raw @movement.join_headline %></h3>
+              <%= raw @movement.join_message %>
+            </div>
+
+            <%= render partial: 'members/join_form' %>
+          </div>
+
+          <div id='social_media'>
+            <%= social_links(@movement.follow_links.attributes) %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+<% end %>
+
+<section class='container' id='activity_feed'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <script type="text/template" id="recent_action_template">
+        <li class="recent_action">
+          <div class="quote_box"></div>
+          <p class="message">{{{html}}}</p>
+        </li>
+      </script>
+
+      <div class="recent_actions" data-feed-path="<%= activity_path(:locale => I18n.locale.to_s, :format => 'json') %>">
+        <ul class="slider"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if @movement.featured_contents.attributes["Carousel"].present? %>
+  <section id='carousel-background'>
+    <div id="carousel" class="carousel slide">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% @movement.featured_contents.attributes["Carousel"].each_with_index do |featured_action, index| %>
+          <li data-target='#carousel' data-slide-to='<%= index %>' class='<%= 'active' if index.zero? %>'></li>
+        <% end %>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <% @movement.featured_contents.attributes["Carousel"].each_with_index do |featured_action, index| %>
+          <div class='item <%= 'active' if index.zero? %>'>
+            <div class="featured_action" style="background-image:url(<%= featured_action.image %>);">
+              <div class="carousel-caption">
+                <h2><%= raw featured_action.title %></h2>
+                <p><%= raw featured_action.description %></p>
+                <%= link_to featured_action.button_text, featured_action.url, class: 'link_button' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel" data-slide="prev">
+        <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel" data-slide="next">
+        <span class="icon-next"></span>
+      </a>
+    </div>
+  </section>
+<% end %>
+
+<div id='featured_actions_background'>
+  <section class='container' id='featured_actions'>
+    <% @movement.featured_contents.attributes["FeaturedActions"].try(:in_groups_of, 3, false) do |group| %>
+      <div class='row'>
+        <% group.each do |featured_content| %>
+          <div class='col-md-4'>
+            <aside>
+              <%= image_tag featured_content.image %>
+              <div class='featured_content_title'>
+                <h3><%= featured_content.title %></h3>
+              </div>
+              <%= link_to featured_content.button_text, featured_content.url, class: 'link_button' %>
+            </aside>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+</div>

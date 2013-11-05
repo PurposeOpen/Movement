@@ -1,0 +1,43 @@
+@import "vars_and_mixins.css.less";
+
+#targets {
+  margin-bottom: 10px;
+  width: 90%;
+  float: right;
+}
+
+#email_content {
+  padding: 0px 20px;
+
+  #action_info_subject, #action_info_body {
+    float: right;
+    margin-bottom: 10px;
+    width: 90%;
+    border: none;
+    border-bottom: @input-border-settings;
+  }
+
+  #action_info_body {
+    margin-bottom: 40px;
+    height: 100px;
+  }
+
+  label, span {
+    color: @blue;
+  }
+
+}
+
+#cc_me_container { padding: 0px 20px 0px 20px; }
+
+form#new_member_info p.field_wrapper.cc_me {
+  margin-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+  border-top: @input-border-settings;
+  
+  input#action_info_cc_me {
+    width: auto;
+    height: auto;
+  }
+}

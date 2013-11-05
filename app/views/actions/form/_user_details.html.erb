@@ -1,0 +1,78 @@
+<%= hidden_field_tag "t", params[:t] %>
+
+<div id='fields'>
+  <%= labeled_field_group action_content, :email do |is_required| %>
+    <%= f.text_field :email, type: 'email', required: is_required, autofocus: true, title: "#{t('fields.validations.email_required')}", placeholder: conditionally_add_asterisk(t('fields.email'), is_required),
+        data: { validation: {
+          messages: { email: t('fields.validations.email_invalid') }
+        }.to_json } %>
+    <%= f.label :email, t('fields.email'), class: 'hidden' %>
+  <% end %>
+
+  <div class='row'>
+    <div class='col-md-6 extend-right'>
+      <%= labeled_field_group action_content, :first_name do |is_required| %>
+        <%= f.text_field :first_name, required: is_required, title: "#{t('fields.validations.first_name_required')}", placeholder: conditionally_add_asterisk(t('fields.first_name'), is_required) %>
+        <%= f.label :first_name, t('fields.first_name'), class: 'hidden' %>
+      <% end %>
+    </div>
+    <div class='col-md-6 extend-left'>
+      <%= labeled_field_group action_content, :last_name do |is_required| %>
+        <%= f.text_field :last_name, required: is_required, title: "#{t('fields.validations.last_name_required')}", placeholder: conditionally_add_asterisk(t('fields.last_name'), is_required) %>
+        <%= f.label :last_name, t('fields.last_name'), class: 'hidden' %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= labeled_field_group action_content, :country do |is_required| %>
+    <%= f.country_select 'country_iso', {placeholder: conditionally_add_asterisk(t('fields.country'), is_required)}, :class => "country-select", :required => is_required, :title => "#{t('fields.validations.country_required')}" %>
+  <% end %>
+
+  <%= labeled_field_group action_content, :postcode do |is_required| %>
+    <%= f.text_field :postcode, required: is_required, title: "#{t('fields.validations.postcode_required')}", placeholder: conditionally_add_asterisk(t('fields.postcode'), is_required) %>
+    <%= f.label :postcode, t('fields.postcode'), class: 'hidden' %>
+  <% end %>
+
+  <%= labeled_field_group action_content, :suburb do |is_required| %>
+    <%= f.text_field :suburb, required: is_required, title: "#{t('fields.validations.suburb_required')}", placeholder: conditionally_add_asterisk(t('fields.suburb'), is_required) %>
+    <%= f.label :suburb, t('fields.suburb'), class: 'hidden' %>
+  <% end %>
+
+  <%= labeled_field_group action_content, :street_address do |is_required| %>
+    <%= f.text_field :street_address, required: is_required, title: "#{t('fields.validations.street_address_required')}", placeholder: conditionally_add_asterisk(t('fields.street_address'), is_required) %>
+    <%= f.label :street_address, t('fields.street_address'), class: 'hidden' %>
+  <% end %>
+
+  <%= labeled_field_group action_content, :mobile_number do |is_required| %>
+    <%= f.text_field :mobile_number, type: 'tel', pattern: '^[0-9\s\+\-\(\)]*$',
+        required: is_required,
+        title: "#{t('fields.validations.mobile_number_required')}",
+        placeholder: conditionally_add_asterisk(t('fields.mobile'), is_required),
+        data: { validation: {
+          patternAttribute: true,
+          messages: { patternAttribute: t('fields.validations.mobile_invalid') }
+        }.to_json } %>
+    <%= f.label :mobile_number, t('fields.mobile'), class: 'hidden' %>
+  <% end %>
+
+  <%= labeled_field_group action_content, :home_number do |is_required| %>
+    <%= f.text_field :home_number, type: 'tel', pattern: '^[0-9\s\+\-\(\)]*$',
+        required: is_required,
+        title: "#{t('fields.validations.home_phone_required')}",
+        placeholder: conditionally_add_asterisk(t('fields.home_phone'), is_required),
+        data: { validation: {
+          patternAttribute: true,
+          messages: { patternAttribute: t('fields.validations.home_phone_invalid') }
+        }.to_json } %>
+    <%= f.label :home_number, t('fields.home_phone'), class: 'hidden' %>
+  <% end %>
+
+  <% if comments_enabled?(content_module) %>
+    <%= fields_for :action_info do |ai| %>
+      <p id='comment_container'>
+        <%= ai.label :comment, content_module.options.comment_label %>
+        <%= ai.text_area :comment, maxlength: 200, placeholder: content_module.options.comment_text %>
+      </p>
+    <% end %>
+  <% end %>
+</div>

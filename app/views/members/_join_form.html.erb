@@ -1,0 +1,9 @@
+<%= form_for @member, :as => "member_info", url: members_path(locale: params[:locale]), html: { id: "remote_join" } do |f| %>
+  <%= f.text_field :email, placeholder: t('fields.email'), type: 'email', required: true, title: t('fields.validations.email_required'),
+    :data => { validation: {
+      messages: { email: t('fields.validations.email_invalid') }
+    }.to_json } %>
+  <%= f.label :email, t('fields.email'), class: 'hidden' %>
+
+  <%= f.submit t('buttons.join') %>
+<% end %>

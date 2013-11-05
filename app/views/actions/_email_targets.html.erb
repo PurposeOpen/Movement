@@ -1,0 +1,45 @@
+<% content_for :ask_module_form do %>
+  <%= form_for @member, as: "member_info", url: take_action_action_path(id: @action_content.id, locale: I18n.locale.to_s), method: :post, html: {class: 'email_targets take_action'} do |f| %>
+
+    <div id='email_content'>
+      <span id="target-emails-to"><%= t('actions.show.email_targets.to') %></span>
+      <div id="targets">
+        <% content_module.options.targets_names.each do |target| %>
+          <div class="target-name"><%= target %></div>
+        <% end %>
+      </div>
+
+      <%= fields_for "action_info" do |fe| %>
+        <%= fe.label :subject, t('actions.show.email_targets.subject') %>
+        <%= field_tag :subject do %>
+          <%= fe.text_area :subject, required: true, value: content_module.options.default_subject, disabled: email_editing_disabled?(content_module) %>
+        <% end %>
+
+        <div class='clearfix'></div>
+
+        <%= field_tag :body do %>
+          <%= fe.label :body, t('actions.show.email_targets.body') %>
+          <%= fe.text_area :body, required: true, value: content_module.options.default_body, disabled: email_editing_disabled?(content_module) %>
+        <% end %>
+
+        <div class='clearfix'></div>
+      </div>
+    <% end %>
+
+    <%= render partial: "actions/form/user_details", locals: { action_content: @action_content, content_module: content_module, f: f } %>
+
+    <div id='cc_me_container'>
+      <%= fields_for "action_info" do |fe| %>
+        <%= field_tag :cc_me do %>
+          <%= fe.check_box :cc_me, checked: true %>
+          <%= fe.label :cc_me, t('actions.show.email_targets.send_me_a_copy'), id: 'cc_me' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= render partial: "actions/form/submit_button_and_privacy_policy", locals: { content_module: content_module, f: f } %>
+
+  <% end %>
+<% end %>
+
+<%= render :partial => "ask_module", locals: {content_module: content_module, toggleable_content: content_module.content } %>

@@ -1,0 +1,16 @@
+# Enter your per-environment constants below
+
+development: &default
+  google_tracking_id: <%= ENV["GOOGLE_TRACKING_ID"] %>
+  enable_activity_feed: <%= ENV["ENABLE_ACTIVITY_FEED"] %>
+production:
+  <<: *default
+
+staging:
+  <<: *default
+
+test:
+  <<: *default
+  platform_base_uri:  "http://example.com/api/"
+  movement_id: "demomovement"
+  auth_password: "demomovement"

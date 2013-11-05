@@ -1,0 +1,173 @@
+<div class="donate box">
+  <div id="donate-widget">
+    <div class="half left">
+    </div> 
+    <div class="right">
+      <!--
+      Integration Note:
+        If the user has already entered in their personal info in a previous session,
+        we can omit the entire progress bar and just have a 2-step process. (amt + cc info)
+        When this is the case, just apply the class "existing-user" to the div.pledge below,
+        everything else will adjust automatically (JS, CSS)
+      -->
+      <div class="pledge pledge-step-1 box">
+
+        <!--
+        Integration Note:
+          Don't render this .error-message div if there's no errors, or at least
+          hide it in css.
+        -->
+        <div class="error-message" style="display:none">
+          <ul>
+            <li>Error Messages Goes Here Lorem Ipsum</li>
+            <li>Error Messages Goes Here Lorem Ipsum</li>
+          </ul>
+        </div>
+
+        <div class="title"><%= content_module.title %></div>
+
+        <div class="progress-bar">
+          <div class="step step-1 active">
+            <div class="icon">1   </div>
+            <%= t('actions.show.donation.amount') %>
+          </div>
+          <div class="step step-2">
+            <div class="icon">2</div>
+            <%= t('actions.show.donation.name_and_payment') %>
+          </div>
+<!--           <div class="step step-3">
+            <div class="icon">3</div>
+            <%= t('actions.show.donation.payment') %>
+          </div> -->
+        </div>
+        <section id="donation_module">
+          <form id="donation_form"  action="<%=donate_with_credit_card_action_path(id: @action_content.id, locale: I18n.locale.to_s)%>" method="post" data-setup-paypal-donation-action-path="<%= setup_paypal_donation_action_path(id: @action_content.id, locale: I18n.locale.to_s) %>"  novalidate>
+            <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+            <%= hidden_field_tag "classification", content_module.classification if content_module.respond_to? :classification %>
+            <%= hidden_field_tag "action_internal_id", @action_content.id %>
+            <div class="form-container">
+              <div id="pledge-step-1">
+                <!-- First Row -->
+
+                <div class="first-row">
+                  <div id="currency-dropdown" class="gradient-dropdown closed" style="z-index: 1">
+                    <input type="hidden" name="action_info[currency]" id="action_info_currency" value="USD" /><!-- This input is populated in JS when user selects below: -->
+                    <%= options_for_currency_dropdown(content_module) %>
+                  </div>
+                </div>
+
+                <!-- Second Row -->
+
+                <div class="full">
+                  <div class="label">
+                    <%= t('actions.show.donation.select_an_amount') %>
+                  </div>
+                </div>
+                <input id="amount-hidden-input" type="hidden" name="action_info[amount]" value=""> <!-- Integration note: This is the real amount input, the .amount-input below can be ignored in the form -->
+                <%= options_for_amount(content_module) %>
+
+                <div class="button">
+                  <a><%= t('actions.show.donation.continue') %></a>
+                </div>
+
+                <div class="cc-info"></div>
+                <div class="paypal-info"><%= t('actions.show.donation.or_pay_with') %></div>
+              </div>
+
+              <div id="pledge-step-2">
+                <div class="full email-row field_wrapper email text_based_input">
+                  <input id="member_info_email" type="email" name="member_info[email]" placeholder="<%= t('fields.email') %>" required/>
+                </div>
+                <div class="half left field_wrapper first_name text_based_input">
+                  <input type="text" name="member_info[first_name]" placeholder="<%= t('fields.first_name') %>"  required/>
+                </div>
+                <div class="half right field_wrapper last_name text_based_input">
+                  <input type="text" name="member_info[last_name]" placeholder="<%= t('fields.last_name') %>" required/>
+                </div>
+                <div class="two-thirds country-container">
+                  <div class="gradient-dropdown closed field_wrapper country" style="z-index: 1" >
+                    <input type="hidden" name="member_info[country]" value="USA" required/>
+                    <%= options_for_country_select %>
+                  </div>
+                </div>
+                <div class="third postcode-container field_wrapper postcode text_based_input">
+                  <input type="text" name="member_info[postcode]" placeholder="Postcode" required />
+                </div>
+
+                <div class="button paypal-info">
+                  <a><%=t('actions.show.donation.donate_with_paypal')%></a>
+                </div>
+              </div>
+
+<!--               <div id="pledge-step-3">
+
+                <input autocomplete="off" invalid_amex="<%=t('validations.card_number_invalid_amex')%>" invalid_creditcard="<%= t('validations.card_number_invalid') %>" name="action_info[card_number]" required="required" title="<%=t('validations.card_number_required')%>" type="text" class="credit-card" id="action_info_card_number" placeholder="<%=t('actions.donations.card_number')%>" />
+
+                <div class="credit-card-meta">
+                  <span><%=t('actions.show.donation.expiry')%></span>
+                  <div class="gradient-dropdown closed">
+                    <input type="hidden" name="action_info[card_expiration_month]" value="" />
+                    <div class="closed">MM<div></div></div>
+                    <div class="opened">
+                      <ul>
+                        <li class="active" data-value="01">01</li>
+                        <li data-value="02">02</li>
+                        <li data-value="03">03</li>
+                        <li data-value="04">04</li>
+                        <li data-value="05">05</li>
+                        <li data-value="06">06</li>
+                        <li data-value="07">07</li>
+                        <li data-value="08">08</li>
+                        <li data-value="09">09</li>
+                        <li data-value="10">10</li>
+                        <li data-value="11">11</li>
+                        <li data-value="12">12</li>
+                      </ul>
+                    </div>
+                  </div>
+                  /
+                  <div class="gradient-dropdown closed">
+                    <input type="hidden" name="action_info[card_expiration_year]" value="" />
+                    <div class="closed">YY<div></div></div>
+                    <div class="opened">
+                      <ul>
+                        <li class="active" data-value="13">13</li>
+                        <li data-value="14">14</li>
+                        <li data-value="15">15</li>
+                        <li data-value="16">16</li>
+                        <li data-value="17">17</li>
+                        <li data-value="18">18</li>
+                        <li data-value="19">19</li>
+                        <li data-value="21">21</li>
+                        <li data-value="22">22</li>
+                        <li data-value="23">23</li>
+                        <li data-value="24">24</li>
+                        <li data-value="25">25</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <input type="text" name="action_info[card_cvv2]" placeholder="<%=t('actions.show.donation.security_code')%>" />
+
+                </div> -->
+
+<!--                 <div class="button" id="submit_button">
+                  <a><%=t('actions.show.donation.pledge_now')%>!</a>
+                </div>
+
+                <div class="paypal-info"><%=t('actions.show.donation.or_pay_with')%></div>
+
+              </div> -->
+
+            </form>
+            <div class="disclaimer">
+              <%= raw t('actions.show.donation.disclaimer') %>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

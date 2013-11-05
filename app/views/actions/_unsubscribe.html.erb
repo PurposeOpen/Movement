@@ -1,0 +1,16 @@
+<%= form_for 'member_info', as: "member_info", url: take_action_action_path( id: @action_content.id, locale: I18n.locale.to_s), :method => :post, :html => {id: 'unsubscribe_form'} do |f| %>
+
+  <%= labeled_field_group @action_content, :email do |is_required| %>
+    <%= f.text_field :email, type: 'email', required: is_required, autofocus: true, title: "#{t('fields.validations.email_required')}", placeholder: conditionally_add_asterisk(content_module.options.email_label_text, is_required),
+        data: { validation: {
+          messages: { email: t('fields.validations.email_invalid') }
+        }.to_json } %>
+    <%= f.label :email, t('fields.email'), class: 'hidden' %>
+  <% end %>
+
+
+  <div>
+    <%= f.submit content_module.options.button_text, id: "unsubscribe_submit" %>
+  </div>
+
+<% end %>

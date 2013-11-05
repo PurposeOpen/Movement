@@ -1,0 +1,8 @@
+<div class="closed"><%= default_country %><div></div></div>
+<div class="opened">
+  <ul>
+    <% countries.each do |country| %>
+      <li data-value="<%= country[2] %>" data-uses-postcode="<%= country[1]%>"><%= country[0] %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,98 @@
+@import "vars_and_mixins.css.less";
+
+#action_page_background, #footer_content {
+  background-color: @grey-background-color;
+}
+
+#action_page_background { padding: 20px 0px 80px 0px; }
+
+section#action_page {
+  #header_content {
+    padding: 20px 0px 12px 0px;
+
+    h2 {
+      .proxima-nova-bold;
+      font-size: 30px;
+      color: @blue;
+    }
+  }
+
+  #main_content {
+    img { width: 100%; }
+  }
+
+  #action_module {
+    background-color: white;
+    .border-radius;
+
+    h3 {
+      margin-top: 0px;
+      .proxima-nova-semibold;
+      font-size: 20px;
+      color: @blue;
+    }
+
+    #ask_article {
+      padding: 20px 20px 0px 20px;
+    }
+
+    p.ask_content, p.explanatory_text { margin-bottom: 30px; }
+
+    #comment_container {
+      padding-top: 18px;
+      border-top: @input-border-settings;
+    }
+  }
+}
+
+form#new_member_info {
+  .form_inputs;
+
+  p { margin: 0px; }
+
+  #fields {
+    padding: 0px 20px;
+  }
+
+  #comment_container {
+    label {
+      margin-left: 10px;
+      .input_text;
+      color: @placeholder-color;
+      text-transform: uppercase;
+    }
+
+    #action_info_comment {
+      width: 100%;
+      height: 100px;
+      padding: 20px;
+      border: none;
+      border-bottom: 1px solid @input-border-settings;
+    }
+
+    .counter {
+      margin-top: 10px;
+      margin-bottom: 13px;
+      display: block;
+      text-align: right;
+      font-size: 12px;
+      color: @placeholder-color;
+    }
+  }
+
+  p.privacy {
+    padding: 10px;
+    font-size: 10px;
+    background-color: @grey-background-color;
+  }
+
+  span.error {
+    color: red;
+    margin-left: 10px;
+  }
+
+  button {
+    .generic_button;
+    .border-radius(0 0 3px 3px);
+  }
+}

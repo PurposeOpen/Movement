@@ -1,0 +1,44 @@
+@import "vars_and_mixins.css.less";
+
+#carousel-background {
+  background-color: @grey-background-color;
+}
+
+#carousel {
+  .carousel-inner {
+    .border-radius(~"0 0 50% 50% / 0 0 5% 5%");
+
+    .featured_action {
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 650px;
+
+      .carousel-caption {
+        top: 10%;
+        width: 35%;
+        text-align: left;
+
+        h2 {
+          margin-bottom: 20px;
+          .proxima-nova-bold;
+          font-size: 60px;
+        }
+
+        .link_button {
+          margin-top: 30px;
+          padding: 10px 50px;
+          width: auto;
+          background-color: @action-color;
+          .proxima-nova-bold;
+          color: white;
+          font-size: 22px;
+          text-shadow: none;
+          &:hover {
+            background-color: @action-hover-color;
+          }
+          .border-radius;
+        }
+      }
+    }
+  }
+}
