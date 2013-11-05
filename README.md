@@ -1,4 +1,4 @@
-'Movement' is a movement template site that works with the **[Purpose Platform](https://github.com/PurposeOpen/Platform)**.
+'Movement' is a movement template site that works with the **[Purpose Platform](https://github.com/PurposeOpen/Platform)**. You are free to use and modify it to suite your organization! It is released under the [MIT license](https://github.com/PurposeOpen/Movement/wiki/License).
 
 It uses the **[Porpoise](https://github.com/PurposeOpen/Porpoise)** gem, which provides the API binding to the Platform as well as controllers, models, views, and assets that can be over-ridden in the movement site.
 
