@@ -1,0 +1,15 @@
+<div id='ask_article'>
+  <h3><label for="petition_toggle"><%= raw content_module.title %></label></h3>
+
+  <div>
+    <p class='ask_content'><%= raw content_module.content %></p>
+  </div>
+</div>
+
+<%= form_for @member, as: "member_info", url: take_action_action_path(id: @action_content.id, locale: I18n.locale.to_s), method: :post do |f| %>
+
+  <%= render partial: "actions/form/user_details", locals: { action_content: @action_content, content_module: content_module, f: f } %>
+
+  <%= render partial: "actions/form/submit_button_and_privacy_policy", locals: { content_module: content_module, f: f } %>
+
+<% end %>
