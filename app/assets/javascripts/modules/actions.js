@@ -26,6 +26,39 @@ $Movement.actions = {
       $Movement.donate.initialize();
     });
 
+    $('#geotargeted_decisionmakers_action').each(function() {
+      setUpGeotargetedRepresentatives();
+    });
+
+
+    function setUpGeotargetedRepresentatives() {
+      $('#new_member_info').submit(function() {
+        var street_address = $('#member_info_street_address').val() + ' ' + $('#member_info_postcode').val();
+        var api_endpoint = $('#geotargeted_decisionmakers_action').data('apiEndpoint');
+
+        $.ajax({
+          type: "POST",
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('Access-Control-Expose-Headers', 'x-hello');
+          },
+          url: api_endpoint,
+          data: {address: street_address},
+          dataType: "json",
+          success: function(data) {
+            console.log('success');
+            console.log(data);
+            $('#geotargeted_decisionmakers').html(data);
+          },
+          error: function(data) {
+            console.log('error');
+            console.log(data);
+            $('#geotargeted_decisionmakers').html(data);
+          }
+        })
+
+        return false;
+      });
+    }
 
     function initializeCharCounterForComments() {
       var commentArea = $('#action_info_comment');
