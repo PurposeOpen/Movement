@@ -32,29 +32,22 @@ $Movement.actions = {
 
 
     function setUpGeotargetedRepresentatives() {
+      gapi.client.setApiKey($('#geotargeted_decisionmakers_action').data('apiKey'));
+
       $('#new_member_info').submit(function() {
         var street_address = $('#member_info_street_address').val() + ' ' + $('#member_info_postcode').val();
-        var api_endpoint = $('#geotargeted_decisionmakers_action').data('apiEndpoint');
 
-        $.ajax({
-          type: "POST",
-          beforeSend: function(xhr) {
-            xhr.setRequestHeader('Access-Control-Expose-Headers', 'x-hello');
-          },
-          url: api_endpoint,
-          data: {address: street_address},
-          dataType: "json",
-          success: function(data) {
-            console.log('success');
-            console.log(data);
-            $('#geotargeted_decisionmakers').html(data);
-          },
-          error: function(data) {
-            console.log('error');
-            console.log(data);
-            $('#geotargeted_decisionmakers').html(data);
-          }
-        })
+        var req = gapi.client.request({
+            'path' : '/civicinfo/us_v1/representatives/lookup',
+            'method' : 'POST', // Required. The API does not allow GET requests.
+            'body' : {'address' : street_address}
+        });
+
+        req.execute(function(response, rawResponse) {
+          api_response = response;
+          console.log(response);
+          $('#geotargeted_decisionmakers').html(rawResponse);
+        });
 
         return false;
       });
