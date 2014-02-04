@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require_directory ./lib/bootstrap
+//= require ./lib/google.apis.client
 //= require ./lib/jquery.metadata
 //= require ./lib/jquery.validate
 //= require ./lib/mustache
