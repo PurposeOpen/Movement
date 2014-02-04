@@ -17,7 +17,7 @@ module ActionsHelper
         "TaxDeductibleDonationModule" => 'donation',
         "NonTaxDeductibleDonationModule" => 'donation',
         "EmailTargetsModule" => 'email_targets',
-        "GeotargetedDecisionmakersModule" => 'geotargeted_decisionmakers'
+        "GeotargetedDecisionmakersSocialMediaModule" => 'geotargeted_decisionmakers_social_media'
       }[content_module.type]
     end
   end

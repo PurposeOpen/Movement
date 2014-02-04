@@ -7,7 +7,9 @@
     </div>
   </div>
 
-  <%= form_for @member, as: "member_info", url: take_action_action_path(id: @action_content.id, locale: I18n.locale.to_s), method: :post do |f| %>
+  <%= form_for @member, as: "member_info",
+                        url: take_action_action_path(id: @action_content.id, locale: I18n.locale.to_s),
+                        method: :post do |f| %>
 
     <%= render partial: "actions/form/user_details", locals: { action_content: @action_content, content_module: content_module, f: f } %>
 

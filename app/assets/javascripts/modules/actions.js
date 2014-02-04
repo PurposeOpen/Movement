@@ -35,19 +35,29 @@ $Movement.actions = {
       gapi.client.setApiKey($('#geotargeted_decisionmakers_action').data('apiKey'));
 
       $('#new_member_info').submit(function() {
-        var street_address = $('#member_info_street_address').val() + ' ' + $('#member_info_postcode').val();
+        if($(this).valid()) {
 
-        var req = gapi.client.request({
-            'path' : '/civicinfo/us_v1/representatives/lookup',
-            'method' : 'POST', // Required. The API does not allow GET requests.
-            'body' : {'address' : street_address}
-        });
+          $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize()
+          });
 
-        req.execute(function(response, rawResponse) {
-          api_response = response;
-          console.log(response);
-          $('#geotargeted_decisionmakers').html(rawResponse);
-        });
+          var street_address = $('#member_info_street_address').val() + ' ' + $('#member_info_postcode').val();
+          var req = gapi.client.request({
+              'path' : '/civicinfo/us_v1/representatives/lookup',
+              'method' : 'POST', // Required. The API does not allow GET requests.
+              'body' : {'address' : street_address}
+          });
+
+          req.execute(function(response, rawResponse) {
+            api_response = response;
+            console.log(response);
+            $('#geotargeted_decisionmakers').html(rawResponse);
+          });
+
+          return false;
+        }
 
         return false;
       });
