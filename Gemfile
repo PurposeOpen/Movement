@@ -4,7 +4,8 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'activeresource', '4.0.0', :require => 'active_resource'
 
-gem 'porpoise', :git => 'https://github.com/PurposeOpen/Porpoise', :tag => 'v1.0.0'
+gem 'porpoise', :git => 'https://github.com/PurposeOpen/Porpoise', :branch => 'spike/excelsio-api'
+
 gem 'purpose_country_select', :git => 'https://github.com/PurposeOpen/country_select', :tag => 'v0.1.0'
 
 gem 'dalli'
