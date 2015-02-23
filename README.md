@@ -2,18 +2,6 @@
 
 It uses the **[Porpoise](https://github.com/PurposeOpen/Porpoise)** gem, which provides the API binding to the Platform as well as controllers, models, views, and assets that can be over-ridden in the movement site.
 
-### Try it!
-
-Try a demo of the Purpose Platform and a movement site running on it here:
-
-[https://platform-dev-demo.herokuapp.com](https://platform-dev-demo.herokuapp.com)  
-login: `admin@example.com`  
-password: `developers3x`
-
-[https://movement-dev-demo.herokuapp.com](http://movement-dev-demo.herokuapp.com)
-
-These apps may need a minute to warm up on your first request because they are running on Heroku's free tier.
-
 ### Getting Started
 
 Run the Purpose Platform locally. Instructions are [here](https://github.com/PurposeOpen/Platform/wiki/Running-the-Purpose-Platform-Locally-on-Mac-OS-X).
